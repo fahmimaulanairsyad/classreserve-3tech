@@ -64,19 +64,34 @@ body {
     margin-bottom: 30px;
 }
 
-.btn {
-    width: 320px;
-    padding: 18px;
-    border: none;
-    border-radius: 12px;
-    background: #065f46;
-    color: white;
-    font-size: 22px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-bottom: 20px;
-    transition: 0.3s;
+.btn{
+    width:320px;
+    padding:16px;
+    background:#065f46;
+    border:none;
+    border-radius:12px;
+    color:white;
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+
+    display:block;
+    margin:20px auto;
+    text-align:center;
 }
+
+form{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.input-group{
+    width:100%;
+}
+
 .btn:hover {
     background: #047857;
 }
@@ -99,6 +114,9 @@ body {
     padding: 40px;
     border-radius: 20px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
 }
 
 .card h1 {
