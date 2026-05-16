@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kelola Jadwal</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="sidebar">
+
+<h2>ClassReserve</h2>
+
+<ul>
+<li onclick="goTo('admin-dashboard.html')">Dashboard Admin</li>
+<li>Kelola Jadwal Ruangan</li>
+<li onclick="logout()">Logout</li>
+</ul>
+
+</div>
+
+<div class="dashboard">
+
+<h1>Kelola Jadwal Ruangan</h1>
+
+<br>
+
+<select>
+<option>Ruang 101 - Kelas</option>
+<option>Ruang 102 - Kelas</option>
+<option>Ruang 201 - Laboratorium</option>
+</select>
+
+<div class="schedule">
+
+<table>
+<tr>
+<th>Waktu</th>
+<th>Senin</th>
+<th>Selasa</th>
+<th>Rabu</th>
+<th>Kamis</th>
+<th>Jumat</th>
+<th>Sabtu</th>
+<th>Minggu</th>
+</tr>
+
+<tr>
+<td>07:00 - 08:00</td>
+<td class="available"></td>
+<td class="available"></td>
+<td class="available"></td>
+<td class="available"></td>
+<td class="available"></td>
+<td class="available"></td>
+<td class="available"></td>
+</tr>
+<tr>
+<td>09:00 - 10:00</td>
+<td class="used"></td>
+<td class="available"></td>
+<td class="used"></td>
+<td class="available"></td>
+<td class="available"></td>
+<td class="available"></td>
+<td class="available"></td>
+</tr>
+
+<tr>
+<td>10:00 - 11:00</td>
+<td class="used"></td>
+<td class="available"></td>
+<td class="used"></td>
+<td class="available"></td>
+<td class="used"></td>
+<td class="used"></td>
+<td class="available"></td>
+</tr>
+</table>
+</div>
+</div>
+<script src="js/script.js"></script>
+</body>
+</html>

@@ -74,3 +74,28 @@ function checkPassword(password) {
 function verifyCode(code) {
     return code.length === 6;
 }
+function submitPeminjaman() {
+
+    const kegiatan = document.getElementById("kegiatan").value;
+    const tanggal = document.getElementById("tanggal").value;
+
+    if(kegiatan === "") {
+        alert("Nama kegiatan harus diisi");
+        return false;
+    }
+
+    if(tanggal === "") {
+        alert("Tanggal harus diisi");
+        return false;
+    }
+
+    alert("Pengajuan peminjaman berhasil dikirim");
+}
+
+function approve() {
+    alert("Pengajuan diterima");
+}
+
+function reject() {
+    alert("Pengajuan ditolak");
+}
