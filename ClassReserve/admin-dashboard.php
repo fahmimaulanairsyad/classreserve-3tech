@@ -209,23 +209,18 @@ echo "Approved";
 </td>
 
 <td>
+    <?php if ($row['status'] == 'pending') : ?>
+        <a href="process/approve.php?id=<?= $row['id']; ?>" class="btn-approve">
+            Approve
+        </a>
 
-<a href="process/approve.php?id=<?php echo $data['id']; ?>">
-
-<button class="approve-btn">
-Approve
-</button>
-
-</a>
-
-<a href="process/reject.php?id=<?php echo $data['id']; ?>">
-
-<button class="reject-btn">
-Reject
-</button>
-
-</a>
-
+        <a href="process/reject.php?id=<?= $row['id']; ?>" class="btn-reject"
+           onclick="return confirm('Yakin ingin menolak pengajuan ini?')">
+            Reject
+        </a>
+    <?php else : ?>
+        <span class="text-muted">Tidak ada aksi</span>
+    <?php endif; ?>
 </td>
 
 </tr>
