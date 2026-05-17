@@ -52,7 +52,7 @@ if($data){
     echo "
     <script>
         alert('Login admin berhasil!');
-        window.location.href='../admin-dashboard.html';
+        window.location.href='../admin-dashboard.php';
     </script>
     ";
 
