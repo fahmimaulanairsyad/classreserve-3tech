@@ -1,14 +1,12 @@
 <?php
-
-$host = "localhost";
-$user = "root";
-$password = "";
+$host = "127.0.0.1";
+$username = "root";
+$password = "root";
 $database = "classreserve";
 
-$conn = mysqli_connect($host, $user, $password, $database);
+$conn = mysqli_connect($host, $username, $password, $database);
 
-if(!$conn){
-    die("Koneksi database gagal");
+if (!$conn) {
+    die("Koneksi database gagal: " . mysqli_connect_error());
 }
-
 ?>
