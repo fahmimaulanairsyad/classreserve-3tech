@@ -6,53 +6,54 @@ $id = $_GET['id'];
 
 /*
 |--------------------------------------------------------------------------
-| AMBIL DATA RESERVATION
+| VALIDASI ID
 |--------------------------------------------------------------------------
 */
 
-$get = mysqli_query($conn,
-
-"SELECT * FROM reservations
-WHERE id='$id'");
-
-$data = mysqli_fetch_assoc($get);
+if (!isset($id) || $id == '') {
+    echo "
+    <script>
+        alert('ID pengajuan tidak ditemukan!');
+        window.location.href='../admin-dashboard.php';
+    </script>
+    ";
+    exit;
+}
 
 /*
 |--------------------------------------------------------------------------
-| HAPUS DARI ROOM SCHEDULE
+| UPDATE STATUS RESERVATION MENJADI REJECTED
 |--------------------------------------------------------------------------
 */
 
-mysqli_query($conn,
-
-"DELETE FROM room_schedule
-
-WHERE room_name='".$data['room_name']."'
-
-AND reservation_date='".$data['reservation_date']."'
-
-AND start_time='".$data['start_time']."'
-
-AND end_time='".$data['end_time']."'
+$query = mysqli_query($conn, "
+    UPDATE reservations
+    SET 
+        status='rejected',
+        notification='Pengajuan ditolak admin'
+    WHERE id='$id'
 ");
 
 /*
 |--------------------------------------------------------------------------
-| HAPUS RESERVATION
+| CEK HASIL
 |--------------------------------------------------------------------------
 */
 
-mysqli_query($conn,
-
-"DELETE FROM reservations
-WHERE id='$id'");
-
-/*
-|--------------------------------------------------------------------------
-| KEMBALI KE DASHBOARD
-|--------------------------------------------------------------------------
-*/
-
-header("Location: ../admin-dashboard.php");
+if ($query) {
+    echo "
+    <script>
+        alert('Pengajuan berhasil ditolak!');
+        window.location.href='../admin-dashboard.php';
+    </script>
+    ";
+} else {
+    echo "
+    <script>
+        alert('Gagal menolak pengajuan!');
+        window.location.href='../admin-dashboard.php';
+    </script>
+    ";
+}
 
 ?>

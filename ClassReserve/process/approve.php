@@ -13,6 +13,30 @@ $data = mysqli_fetch_assoc($get);
 
 /*
 |--------------------------------------------------------------------------
+| CEK DOUBLE BOOKING SEBELUM APPROVE
+|--------------------------------------------------------------------------
+*/
+
+$cek_bentrok = mysqli_query($conn, "
+    SELECT * FROM room_schedule
+    WHERE room_name = '".$data['room_name']."'
+    AND reservation_date = '".$data['reservation_date']."'
+    AND start_time < '".$data['end_time']."'
+    AND end_time > '".$data['start_time']."'
+");
+
+if (mysqli_num_rows($cek_bentrok) > 0) {
+    echo "
+    <script>
+        alert('Pengajuan tidak bisa disetujui karena jadwal bentrok!');
+        window.location.href='../admin-dashboard.php';
+    </script>
+    ";
+    exit;
+}
+
+/*
+|--------------------------------------------------------------------------
 | APPROVE
 |--------------------------------------------------------------------------
 */
