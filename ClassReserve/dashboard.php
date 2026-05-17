@@ -253,6 +253,11 @@ Ruang 102 - Kelas
 Laboratorium 201
 </option>
 
+<option value="Ruang Seminar 301"
+<?php if($selected_room == 'Ruang Seminar 301') echo 'selected'; ?>>
+Ruang Seminar 301
+</option>
+
 </select>
 
 </form>

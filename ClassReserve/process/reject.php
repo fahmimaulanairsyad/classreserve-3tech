@@ -4,43 +4,15 @@ include '../config/database.php';
 
 $id = $_GET['id'];
 
-/*
-|--------------------------------------------------------------------------
-| VALIDASI ID
-|--------------------------------------------------------------------------
-*/
-
-if (!isset($id) || $id == '') {
-    echo "
-    <script>
-        alert('ID pengajuan tidak ditemukan!');
-        window.location.href='../admin-dashboard.php';
-    </script>
-    ";
-    exit;
-}
-
-/*
-|--------------------------------------------------------------------------
-| UPDATE STATUS RESERVATION MENJADI REJECTED
-|--------------------------------------------------------------------------
-*/
-
 $query = mysqli_query($conn, "
     UPDATE reservations
     SET 
         status='rejected',
         notification='Pengajuan ditolak admin'
-    WHERE id='$id'
+    WHERE id='$id' AND status='pending'
 ");
 
-/*
-|--------------------------------------------------------------------------
-| CEK HASIL
-|--------------------------------------------------------------------------
-*/
-
-if ($query) {
+if (mysqli_affected_rows($conn) > 0) {
     echo "
     <script>
         alert('Pengajuan berhasil ditolak!');
@@ -50,7 +22,7 @@ if ($query) {
 } else {
     echo "
     <script>
-        alert('Gagal menolak pengajuan!');
+        alert('Pengajuan sudah diproses sebelumnya!');
         window.location.href='../admin-dashboard.php';
     </script>
     ";

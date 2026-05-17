@@ -35,6 +35,20 @@ if (mysqli_num_rows($cek_bentrok) > 0) {
     exit;
 }
 
+$get = mysqli_query($conn, "SELECT * FROM reservations WHERE id='$id' AND status='pending'");
+
+if (mysqli_num_rows($get) == 0) {
+    echo "
+    <script>
+        alert('Pengajuan sudah diproses sebelumnya!');
+        window.location.href='../admin-dashboard.php';
+    </script>
+    ";
+    exit;
+}
+
+$data = mysqli_fetch_assoc($get);
+
 /*
 |--------------------------------------------------------------------------
 | APPROVE
@@ -75,5 +89,6 @@ VALUES
 )");
 
 header("Location: ../admin-dashboard.php");
+
 
 ?>
